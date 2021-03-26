@@ -49,44 +49,42 @@ public class MainActivity extends AppCompatActivity {
     public void authentification() throws IOException {
         final EditText textLogin = findViewById(R.id.txtLogin);
         final EditText textMdp = findViewById(R.id.txtPassword);
+
         RequestBody formBody = new FormBody.Builder()
         .add("login", textLogin.getText().toString())
         .add("mdp",  textMdp.getText().toString())
         .build();
         Request request = new Request.Builder()
-        .url("http://10.100.0.5/bbonnaud/public_html/ppe_Biorelai/authentification.php")
+        .url("http://172.19.228.252/ppe_Biorelai/controleurs/authentification.php")
         .post(formBody)
         .build();
-
+        Log.d("Test", textLogin.getText().toString()+textMdp.getText().toString());
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
 
             public void onResponse(Call call, Response response) throws IOException {
                 responseStr = response.body().string();
+
                 if (responseStr.compareTo("false") != 0) {
                     try {
                         JSONObject user = new JSONObject(responseStr);
-                        Log.d("Test", user.getString("nomUtilisateur") + " est  connecté");
-                        if (user.getString("statut").compareTo("adherent") != 0) {
+
+                        if (user.getString("STATUT").compareTo("adherent") == 0) {
                             Intent intent = new Intent(MainActivity.this, ClientActivity.class);
                             intent.putExtra("user", user.toString());
                             startActivity(intent);
-                        }
-
-                        if (user.getString("statut").compareTo("producteur") != 0) {
+                        }else if (user.getString("STATUT").compareTo("producteur") == 0) {
                             Intent intent = new Intent(MainActivity.this, ProducteurActivity.class);
                             intent.putExtra("user", user.toString());
                             startActivity(intent);
-                        }
-
-                        if (user.getString("statut").compareTo("responsable") != 0) {
+                        }else if (user.getString("STATUT").compareTo("responsable") == 0) {
                             Intent intent = new Intent(MainActivity.this, ResponsableActivity.class);
                             intent.putExtra("user", user.toString());
                             startActivity(intent);
                         }
-                    }
-                    catch(JSONException e){
+                    }catch(JSONException e){
                         // Toast.makeText(MainActivity.this, "Erreur de connexion !!!! !", Toast.LENGTH_SHORT).show();
+                        Log.d("Test",e.getMessage());
                     }
                 } else {
                     Log.d("Test","Login ou mot de  passe non valide !");
