@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        findViewById(R.id.btnQuitter).setOnClickListener(v -> {finishAffinity(); });
     }
 
 
