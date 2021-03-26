@@ -6,17 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="411dp"
+        android:layout_height="131dp"
+        app:srcCompat="@drawable/biorelais"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="62dp" />
+
     <TextView
         android:id="@+id/Welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bienvenu sur BioRelai !"
+        android:text="Bienvenue sur BioRelai !"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.338" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.075" />
 
     <TextView
         android:id="@+id/lblMail"
@@ -30,12 +38,13 @@
         android:id="@+id/txtPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="56dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/txtLogin" />
 
     <TextView
         android:id="@+id/lblPassword"
@@ -49,41 +58,36 @@
         android:id="@+id/txtLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="56dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblMail" />
+        app:layout_constraintTop_toBottomOf="@+id/Welcome" />
 
     <Button
         android:id="@+id/btnValider"
         android:layout_width="149dp"
         android:layout_height="57dp"
+        android:layout_marginTop="92dp"
         android:text="Valider"
         android:textColor="@color/black"
         app:backgroundTint="#BEBA1D"
         app:layout_constraintEnd_toStartOf="@+id/btnQuitter"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="548dp" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
     <Button
         android:id="@+id/btnQuitter"
         android:layout_width="149dp"
         android:layout_height="57dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="32dp"
         android:text="Quitter"
         android:textColor="@color/black"
         app:backgroundTint="#BEBA1D"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="548dp" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="411dp"
-        android:layout_height="131dp"
-        app:srcCompat="@drawable/biorelais"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="62dp" />
+        tools:layout_editor_absoluteY="545dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
