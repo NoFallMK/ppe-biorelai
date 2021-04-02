@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ProducteurActivity extends AppCompatActivity {
 
@@ -13,6 +17,16 @@ public class ProducteurActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producteur);
+
+        try {
+            final JSONObject user = new JSONObject(getIntent().getStringExtra("user"));
+            final TextView textIdentification = findViewById(R.id.txtProducteur);
+            String txtUser = "Bienvenue " + user.getString("NOMUTILISATEUR") + " " + user.getString("PRENOMUTILISATEUR") + " !";
+            textIdentification.setText(txtUser);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         Button btnDeconnexion = (Button) findViewById(R.id.btnDeconnexionProducteur);
         btnDeconnexion.setOnClickListener(new View.OnClickListener() {
