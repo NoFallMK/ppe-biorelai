@@ -16,19 +16,8 @@
         app:backgroundTint="#BEBA1D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.854"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnCommande"
-        android:layout_width="149dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="24dp"
-        android:text="Commande du jour"
-        android:textColor="@color/black"
-        app:backgroundTint="#BEBA1D"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtProducteur" />
 
     <ImageView
         android:id="@+id/imgBioRelai"
@@ -47,5 +36,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgBioRelai" />
+
+    <ListView
+        android:id="@+id/lstCommande"
+        android:layout_width="334dp"
+        android:layout_height="336dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnDeconnexionProducteur"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtProducteur" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
