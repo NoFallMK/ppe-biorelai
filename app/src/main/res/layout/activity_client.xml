@@ -7,14 +7,16 @@
     tools:context=".ClientActivity">
 
     <Button
-        android:id="@+id/btnQuitterClient"
+        android:id="@+id/btnDecoClient"
         android:layout_width="149dp"
         android:layout_height="57dp"
-        android:text="Quitter"
+        android:layout_marginBottom="32dp"
+        android:text="Deconnexion"
         android:textColor="@color/black"
         app:backgroundTint="#BEBA1D"
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="634dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageBioRelai2"
@@ -26,10 +28,24 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Page Client"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="201dp" />
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageBioRelai2" />
+
+    <ListView
+        android:id="@+id/lstCommande"
+        android:layout_width="273dp"
+        android:layout_height="378dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnDecoClient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtClient"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

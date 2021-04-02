@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -22,6 +23,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
+    public static String idUser;
     String responseStr ;
     OkHttpClient client = new OkHttpClient();
 
@@ -59,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         .post(formBody)
         .build();
 
-        Log.d("Test", textLogin.getText().toString()+textMdp.getText().toString());
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
 
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 if (responseStr.compareTo("false") != 0) {
                     try {
                         JSONObject user = new JSONObject(responseStr);
+                        idUser = user.getString("IDUTILISATEUR");
 
                         if (user.getString("STATUT").compareTo("adherent") == 0) {
                             Intent intent = new Intent(MainActivity.this, ClientActivity.class);
@@ -88,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("Test",e.getMessage());
                     }
                 } else {
+                    //Toast.makeText(MainActivity.this, "Erreur ,Login ou mot de  passe incorrect !", Toast.LENGTH_SHORT).show();
+
                     Log.d("Test","Login ou mot de  passe non valide !");
                 }
             }
