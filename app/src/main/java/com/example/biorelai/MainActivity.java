@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         .add("mdp",  textMdp.getText().toString())
         .build();
         Request request = new Request.Builder()
-        .url("http://nofall.fr/ppe-biorelai/authentification.php")
+        .url("http://172.19.228.188/ppe_biorelaiPHP/controleurs/authentification.php")
         .post(formBody)
         .build();
         Log.d("Test", textLogin.getText().toString()+textMdp.getText().toString());
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("Test",e.getMessage());
                     }
                 } else {
-                    Log.d("Test","Login ou mot de  passe non valide !");
+                    Log.d("Test","Login ou mot de passe non valide !");
                 }
             }
 
