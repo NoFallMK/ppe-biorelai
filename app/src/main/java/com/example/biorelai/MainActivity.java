@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         .url("http://172.19.228.252/ppe_Biorelai/controleurs/authentification.php")
         .post(formBody)
         .build();
+
         Log.d("Test", textLogin.getText().toString()+textMdp.getText().toString());
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
