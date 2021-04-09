@@ -28,6 +28,14 @@ public class ProducteurActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        Button btnCommandes = (Button) findViewById(R.id.btnCommandes);
+        btnCommandes.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View btnCommandes) {
+                Intent intentCommandes = new Intent(ProducteurActivity.this, CommandeProducteurActivity.class);
+                startActivity(intentCommandes);
+            }
+        });
+
         Button btnDeconnexion = (Button) findViewById(R.id.btnDeconnexionProducteur);
         btnDeconnexion.setOnClickListener(new View.OnClickListener() {
             public void onClick(View btnDeconnexion) {

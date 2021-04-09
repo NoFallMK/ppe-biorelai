@@ -20,10 +20,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-
 public class MainActivity extends AppCompatActivity {
     String responseStr ;
     OkHttpClient client = new OkHttpClient();
+    public static String idUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 if (responseStr.compareTo("false") != 0) {
                     try {
                         JSONObject user = new JSONObject(responseStr);
-
+                        idUser = user.getString("IDUTILISATEUR");
                         if (user.getString("STATUT").compareTo("adherent") == 0) {
                             Intent intent = new Intent(MainActivity.this, ClientActivity.class);
                             intent.putExtra("user", user.toString());

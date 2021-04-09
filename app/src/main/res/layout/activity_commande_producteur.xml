@@ -6,6 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".CommandeProducteurActivity">
 
+    <Button
+        android:id="@+id/btnRetour"
+        android:layout_width="149dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="28dp"
+        android:text="Retour"
+        android:textColor="@color/black"
+        app:backgroundTint="#BEBA1D"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnParClient"
+        android:layout_width="105dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="20dp"
+        android:text="Client"
+        android:textColor="@color/black"
+        app:backgroundTint="#BEBA1D"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblTri" />
+
+    <Button
+        android:id="@+id/btnParProduit"
+        android:layout_width="105dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="68dp"
+        android:text="Produit"
+        android:textColor="@color/black"
+        app:backgroundTint="#BEBA1D"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblTri" />
+
+    <TextView
+        android:id="@+id/lblCommandes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
+        android:text="Commandes du jour :"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.161"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBioRelai" />
+
     <ImageView
         android:id="@+id/imgBioRelai"
         android:layout_width="414dp"
@@ -14,4 +61,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/biorelais"
         tools:layout_editor_absoluteX="-1dp" />
+
+    <TextView
+        android:id="@+id/lblTri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Trier par :"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBioRelai" />
+
+    <ListView
+        android:layout_width="310dp"
+        android:layout_height="285dp"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="326dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
