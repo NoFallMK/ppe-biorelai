@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         .add("mdp",  textMdp.getText().toString())
         .build();
         Request request = new Request.Builder()
-        .url("http://172.19.228.188/ppe_biorelaiPHP/controleurs/authentification.php")
+        .url("http://169.254.78.78/ppe_biorelai/controleurs/authentification.php")
         .post(formBody)
         .build();
         Log.d("Test", textLogin.getText().toString()+textMdp.getText().toString());
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
             public void onResponse(Call call, Response response) throws IOException {
                 responseStr = response.body().string();
-
+                Log.d("Test", responseStr);
                 if (responseStr.compareTo("false") != 0) {
                     try {
                         JSONObject user = new JSONObject(responseStr);
@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call call, IOException e)
             {
                 Log.d("Test","erreur!!! connexion impossible");
+                Log.d("Test", e.getMessage());
             }
 
         });
