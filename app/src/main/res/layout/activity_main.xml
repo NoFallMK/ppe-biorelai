@@ -10,10 +10,11 @@
         android:id="@+id/imageBioRelai"
         android:layout_width="411dp"
         android:layout_height="131dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/biorelais"
-        tools:layout_editor_absoluteX="0dp" />
+        app:srcCompat="@drawable/biorelais" />
 
     <TextView
         android:id="@+id/Welcome"
@@ -83,7 +84,7 @@
         android:layout_marginTop="92dp"
         android:text="Valider"
         android:textColor="@color/black"
-        app:backgroundTint="#BEBA1D"
+        android:backgroundTint="#BEBA1D"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
@@ -95,7 +96,7 @@
         android:layout_marginEnd="32dp"
         android:text="Quitter"
         android:textColor="@color/black"
-        app:backgroundTint="#BEBA1D"
+        android:backgroundTint="#BEBA1D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
