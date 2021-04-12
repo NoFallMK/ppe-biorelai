@@ -26,8 +26,9 @@
         android:text="Commandes du jour"
         android:textColor="@color/black"
         app:backgroundTint="#BEBA1D"
-        app:layout_constraintTop_toBottomOf="@+id/txtProducteur"
-        tools:layout_editor_absoluteX="131dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtProducteur" />
 
     <ImageView
         android:id="@+id/imgBioRelai"

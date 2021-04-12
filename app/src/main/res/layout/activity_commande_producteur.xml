@@ -73,8 +73,11 @@
         app:layout_constraintTop_toBottomOf="@+id/imgBioRelai" />
 
     <ListView
+        android:id="@+id/listeLesCommandes"
         android:layout_width="310dp"
         android:layout_height="285dp"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="326dp" />
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblCommandes" />
 </androidx.constraintlayout.widget.ConstraintLayout>

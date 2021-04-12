@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -36,7 +40,7 @@ public class CommandeProducteurActivity extends AppCompatActivity {
         btnClients.setOnClickListener(new View.OnClickListener() {
             public void onClick(View btnClients) {
                 try {
-                    lesCommandes("clients");
+                    lesCommandes("ad.MAIL");
                 }catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -47,7 +51,7 @@ public class CommandeProducteurActivity extends AppCompatActivity {
         btnProduits.setOnClickListener(new View.OnClickListener() {
             public void onClick(View btnProduits) {
                 try {
-                    lesCommandes("produits");
+                    lesCommandes("p.NOMPRODUIT");
                 }catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -64,10 +68,14 @@ public class CommandeProducteurActivity extends AppCompatActivity {
     }
 
     public void lesCommandes(String tri) throws IOException {
+        final ArrayList arrayListLesCommandes = new ArrayList<String>();
         RequestBody formBody = new FormBody.Builder()
                 .add("idProducteur", idUser)
                 .add("tri", tri)
                 .build();
+        Log.d("test1", idUser);
+        Log.d("test1", tri);
+
         Request request = new Request.Builder()
                 .url("http://169.254.78.78/ppe_biorelai/controleurs/lesCommandes.php")
                 .post(formBody)
@@ -77,21 +85,26 @@ public class CommandeProducteurActivity extends AppCompatActivity {
 
             public void onResponse(Call call, Response response) throws IOException {
                 responseStr = response.body().string();
-                Log.d("Test", responseStr);
-                if (responseStr.compareTo("false") != 0) {
-                    try {
-                        JSONObject lesCommandes = new JSONObject(responseStr);
+                JSONArray jsonArrayLesCommandes = null;
+                try {
 
-                        if (lesCommandes != null) {
-
-                        }
-                        else{
-                            //Afficher "Aucune commande de prévue aujourd'hui"
-                        }
-                    }catch(JSONException e){
-                        Log.d("Test",e.getMessage());
+                    jsonArrayLesCommandes = new JSONArray(responseStr);
+                    for (int i = 0; i < jsonArrayLesCommandes.length(); i++) {
+                        JSONObject jsonlaCommande = jsonArrayLesCommandes.getJSONObject(i);
+                        arrayListLesCommandes.add("Commande N°" + jsonlaCommande.getString("IDCOMMANDE") + " \r" + "Client : " + jsonlaCommande.getString("MAIL") + "\r Produit : " + jsonlaCommande.getString("NOMPRODUIT") + " \r Quantité: " + jsonlaCommande.getString("QUANTITE"));
+                        Log.d("laCommande", jsonlaCommande.toString());
                     }
+                } catch (JSONException e) {
+                    Log.d("Test", e.getMessage());
                 }
+
+                ListView listViewLesCommandes = findViewById(R.id.listeLesCommandes);
+
+
+                ArrayAdapter<String> arrayAdapterLesCommandes = new ArrayAdapter<String>(CommandeProducteurActivity.this, android.R.layout.simple_list_item_1, arrayListLesCommandes);
+                runOnUiThread(() -> {
+                    listViewLesCommandes.setAdapter(arrayAdapterLesCommandes);
+                });
             }
 
             public void onFailure(Call call, IOException e)
