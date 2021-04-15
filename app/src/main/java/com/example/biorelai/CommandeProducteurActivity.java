@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -75,7 +76,7 @@ public class CommandeProducteurActivity extends AppCompatActivity {
     public void lesCommandes(String tri) throws IOException {
         final ArrayList arrayListLesCommandes = new ArrayList<String>();
         RequestBody formBody = new FormBody.Builder()
-                .add("idProducteur", idUser)
+                .add("producteur", idUser)
                 .add("tri", tri)
                 .build();
         Log.d("test1", idUser);
@@ -109,6 +110,22 @@ public class CommandeProducteurActivity extends AppCompatActivity {
                 ArrayAdapter<String> arrayAdapterLesCommandes = new ArrayAdapter<String>(CommandeProducteurActivity.this, android.R.layout.simple_list_item_1, arrayListLesCommandes);
                 runOnUiThread(() -> {
                     listViewLesCommandes.setAdapter(arrayAdapterLesCommandes);
+                });
+
+                JSONArray finalJsonArrayCommande = jsonArrayLesCommandes;
+                listViewLesCommandes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String idListe =(String) listViewLesCommandes.getItemAtPosition(position);
+                        try {
+                            Intent intent = new Intent(CommandeProducteurActivity.this, SignalerActivity.class);
+                            intent.putExtra("IDCOMMANDE",finalJsonArrayCommande.getJSONObject(position).getString("IDCOMMANDE"));
+                            Log.d("TEST",finalJsonArrayCommande.getJSONObject(position).getString("IDCOMMANDE"));
+                            startActivity(intent);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 });
             }
 

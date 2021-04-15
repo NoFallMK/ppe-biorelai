@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     String responseStr ;
     OkHttpClient client = new OkHttpClient();
     public static String idUser;
+    public static String utilisateur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         JSONObject user = new JSONObject(responseStr);
                         idUser = user.getString("IDUTILISATEUR");
+                        utilisateur = user.toString();
                         if (user.getString("STATUT").compareTo("adherent") == 0) {
                             Intent intent = new Intent(MainActivity.this, ClientActivity.class);
                             intent.putExtra("user", user.toString());
