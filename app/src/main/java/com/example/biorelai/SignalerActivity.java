@@ -36,12 +36,26 @@ public class SignalerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signaler);
+
         Bundle extras = getIntent().getExtras();
         String idCommandeActuelle = extras.getString("IDCOMMANDE");
+        String produitActuel = extras.getString("nomProduit");
+        String qtteProduit = extras.getString("qtteProduit");
 
         final TextView textIdentification = findViewById(R.id.lblCommande);
         String txtCommande = "Commande n° " + idCommandeActuelle;
         textIdentification.setText(txtCommande);
+
+        Button btnModifQtte = (Button) findViewById(R.id.btnModifierQtte);
+        btnModifQtte.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View btnModifQtte) {
+                Intent intent = new Intent(SignalerActivity.this, ModifQuantite.class);
+                intent.putExtra("idCommande", idCommandeActuelle);
+                intent.putExtra("nomProduit", produitActuel);
+                intent.putExtra("qtteProduit", qtteProduit);
+                startActivity(intent);
+            }
+        });
 
         Button btnPartRecup = (Button) findViewById(R.id.btnPartRecup);
         btnPartRecup.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +66,7 @@ public class SignalerActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Intent intent = new Intent(SignalerActivity.this, CommandeProducteurActivity.class);
-                //intent.putExtra("user", idUser);
+                intent.putExtra("user", idUser);
                 startActivity(intent);
             }
         });
@@ -96,15 +110,16 @@ public class SignalerActivity extends AppCompatActivity {
 
     public void modifEtat(String etat) throws IOException {
         Bundle bundle = getIntent().getExtras();
-        String idCommande = bundle.getString("idcommande");
+        String idCommande = bundle.getString("IDCOMMANDE");
+        Log.d("cmd", idCommande);
 
         RequestBody formBody = new FormBody.Builder()
-                .add("idCommande", idCommande)
+                .add("idcommande", idCommande)
                 .add("etat",etat)
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.1.80/ppe_BiorelaiPHP/controleurs/modifEtat.php")
+                .url("http://169.254.78.78/ppe_biorelai/controleurs/modifEtat.php")
                 .post(formBody)
                 .build();
 
@@ -113,10 +128,11 @@ public class SignalerActivity extends AppCompatActivity {
 
             public void onResponse(Call call, Response response) throws IOException {
                 responseStr = response.body().string();
+                Log.d("rps", responseStr);
                 if (responseStr.compareTo("false") != 0) {
-                    Log.d("Test IF","NICKEL");
+                    Log.d("Test IF","Fonctionne !");
                 } else {
-                    Log.d("Test ELSE","ERREUR");
+                    Log.d("Test ELSE","Erreur");
                 }
             }
 

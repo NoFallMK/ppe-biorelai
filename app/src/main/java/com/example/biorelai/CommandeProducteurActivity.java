@@ -97,7 +97,7 @@ public class CommandeProducteurActivity extends AppCompatActivity {
                     jsonArrayLesCommandes = new JSONArray(responseStr);
                     for (int i = 0; i < jsonArrayLesCommandes.length(); i++) {
                         JSONObject jsonlaCommande = jsonArrayLesCommandes.getJSONObject(i);
-                        arrayListLesCommandes.add("Commande N°" + jsonlaCommande.getString("IDCOMMANDE") + " \r" + "Client : " + jsonlaCommande.getString("MAIL") + "\r Produit : " + jsonlaCommande.getString("NOMPRODUIT") + " \r Quantité: " + jsonlaCommande.getString("QUANTITE"));
+                        arrayListLesCommandes.add("Commande n°" + jsonlaCommande.getString("IDCOMMANDE") + " \r" + "Client : " + jsonlaCommande.getString("MAIL") + "\r Produit : " + jsonlaCommande.getString("NOMPRODUIT") + " \r Quantité: " + jsonlaCommande.getString("QUANTITE"));
                         Log.d("laCommande", jsonlaCommande.toString());
                     }
                 } catch (JSONException e) {
@@ -120,6 +120,8 @@ public class CommandeProducteurActivity extends AppCompatActivity {
                         try {
                             Intent intent = new Intent(CommandeProducteurActivity.this, SignalerActivity.class);
                             intent.putExtra("IDCOMMANDE",finalJsonArrayCommande.getJSONObject(position).getString("IDCOMMANDE"));
+                            intent.putExtra("nomProduit",finalJsonArrayCommande.getJSONObject(position).getString("NOMPRODUIT"));
+                            intent.putExtra("qtteLivree",finalJsonArrayCommande.getJSONObject(position).getString("IDCOMMANDE"));
                             Log.d("TEST",finalJsonArrayCommande.getJSONObject(position).getString("IDCOMMANDE"));
                             startActivity(intent);
                         } catch (JSONException e) {

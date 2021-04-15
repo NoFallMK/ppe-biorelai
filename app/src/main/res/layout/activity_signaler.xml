@@ -21,41 +21,55 @@
         app:layout_constraintVertical_bias="0.74" />
 
     <Button
-        android:id="@+id/btnPartRecup"
-        android:layout_width="158dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="144dp"
-        android:text="Partiellement récupérée"
-        android:textColor="@color/black"
-        app:backgroundTint="#BEBA1D"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBioRelai" />
-
-    <Button
         android:id="@+id/btnNonRecup"
         android:layout_width="158dp"
         android:layout_height="51dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="16dp"
         android:text="Non récupérée"
         android:textColor="@color/black"
         app:backgroundTint="#BEBA1D"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toEndOf="@+id/btnPartRecup"
-        app:layout_constraintTop_toBottomOf="@+id/imgBioRelai" />
+        app:layout_constraintTop_toBottomOf="@+id/btnModifierQtte" />
 
     <Button
         android:id="@+id/btnCliAbs"
-        android:layout_width="158dp"
+        android:layout_width="164dp"
         android:layout_height="51dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginTop="88dp"
         android:text="Client Absent"
         android:textColor="@color/black"
         app:backgroundTint="#BEBA1D"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnModifierQtte" />
+
+    <Button
+        android:id="@+id/btnModifierQtte"
+        android:layout_width="164dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="120dp"
+        android:text="Modifier Quantité"
+        android:textColor="@color/black"
+        app:backgroundTint="#BEBA1D"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgBioRelai" />
+
+    <Button
+        android:id="@+id/btnPartRecup"
+        android:layout_width="158dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="18dp"
+        android:text="Partiellement récupérée"
+        android:textColor="@color/black"
+        app:backgroundTint="#BEBA1D"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnModifierQtte" />
 
     <ImageView
         android:id="@+id/imgBioRelai"
