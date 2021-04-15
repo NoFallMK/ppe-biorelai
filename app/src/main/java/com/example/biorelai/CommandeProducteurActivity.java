@@ -121,7 +121,8 @@ public class CommandeProducteurActivity extends AppCompatActivity {
                             Intent intent = new Intent(CommandeProducteurActivity.this, SignalerActivity.class);
                             intent.putExtra("IDCOMMANDE",finalJsonArrayCommande.getJSONObject(position).getString("IDCOMMANDE"));
                             intent.putExtra("nomProduit",finalJsonArrayCommande.getJSONObject(position).getString("NOMPRODUIT"));
-                            intent.putExtra("qtteLivree",finalJsonArrayCommande.getJSONObject(position).getString("IDCOMMANDE"));
+                            intent.putExtra("qtteLivree",finalJsonArrayCommande.getJSONObject(position).getInt("QUANTITE"));
+                            Log.d("qtte ", String.valueOf(finalJsonArrayCommande.getJSONObject(position).getInt("QUANTITE")));
                             Log.d("TEST",finalJsonArrayCommande.getJSONObject(position).getString("IDCOMMANDE"));
                             startActivity(intent);
                         } catch (JSONException e) {

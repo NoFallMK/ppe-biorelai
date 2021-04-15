@@ -40,7 +40,7 @@ public class SignalerActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String idCommandeActuelle = extras.getString("IDCOMMANDE");
         String produitActuel = extras.getString("nomProduit");
-        String qtteProduit = extras.getString("qtteProduit");
+        int qtteProduit = extras.getInt("qtteLivree");
 
         final TextView textIdentification = findViewById(R.id.lblCommande);
         String txtCommande = "Commande n° " + idCommandeActuelle;
@@ -53,6 +53,7 @@ public class SignalerActivity extends AppCompatActivity {
                 intent.putExtra("idCommande", idCommandeActuelle);
                 intent.putExtra("nomProduit", produitActuel);
                 intent.putExtra("qtteProduit", qtteProduit);
+                Log.d("Qtte2", String.valueOf(qtteProduit));
                 startActivity(intent);
             }
         });
