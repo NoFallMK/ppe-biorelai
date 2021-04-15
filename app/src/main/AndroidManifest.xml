@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BioRelai">
-        <activity android:name=".CommandeProducteurActivity"></activity>
+        <activity android:name=".AnciennesCommandesActivity"></activity>
+        <activity android:name=".SignalerActivity" />
+        <activity android:name=".CommandeProducteurActivity" />
         <activity android:name=".ResponsableActivity" />
         <activity android:name=".ClientActivity" />
         <activity android:name=".ProducteurActivity" />

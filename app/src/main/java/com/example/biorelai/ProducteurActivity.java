@@ -36,6 +36,14 @@ public class ProducteurActivity extends AppCompatActivity {
             }
         });
 
+        Button btnOldCommandes = (Button) findViewById(R.id.btnOldCommandes);
+        btnOldCommandes.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View btnOldCommandes) {
+                Intent intentOldCommandes = new Intent(ProducteurActivity.this, AnciennesCommandesActivity.class);
+                startActivity(intentOldCommandes);
+            }
+        });
+
         Button btnDeconnexion = (Button) findViewById(R.id.btnDeconnexionProducteur);
         btnDeconnexion.setOnClickListener(new View.OnClickListener() {
             public void onClick(View btnDeconnexion) {

@@ -35,6 +35,11 @@ public class CommandeProducteurActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commande_producteur);
+        try {
+            lesCommandes("ad.MAIL");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Button btnClients = (Button) findViewById(R.id.btnParClient);
         btnClients.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +103,7 @@ public class CommandeProducteurActivity extends AppCompatActivity {
                     Log.d("Test", e.getMessage());
                 }
 
-                ListView listViewLesCommandes = findViewById(R.id.listeLesCommandes);
+                ListView listViewLesCommandes = findViewById(R.id.listeLesAnciennesCommandes);
 
 
                 ArrayAdapter<String> arrayAdapterLesCommandes = new ArrayAdapter<String>(CommandeProducteurActivity.this, android.R.layout.simple_list_item_1, arrayListLesCommandes);
