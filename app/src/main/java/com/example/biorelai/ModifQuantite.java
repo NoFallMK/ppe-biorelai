@@ -25,7 +25,7 @@ import static com.example.biorelai.CommandeProducteurActivity.idProduit;
 public class ModifQuantite extends AppCompatActivity {
     String responseStr ;
     OkHttpClient client = new OkHttpClient();
-    String quantiteProduit = "";
+    public static String idLaCommande = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +36,7 @@ public class ModifQuantite extends AppCompatActivity {
         final TextView textIdentificationCommande = findViewById(R.id.lblCommande);
         String txtCommande = "Commande n° " + idCommandeActuelle;
         textIdentificationCommande.setText(txtCommande);
+        idLaCommande = idCommandeActuelle;
 
         String produitActuel = extras.getString("nomProduit");
         final TextView textIdentificationProduit = findViewById(R.id.lblProduit);
@@ -43,7 +44,7 @@ public class ModifQuantite extends AppCompatActivity {
         textIdentificationProduit.setText(txtProduit);
 
         //L'affichage de la quantité livrée devrai apparaître mais n'appraît pas. Je ne sais pas pourquoi...
-        quantiteProduit = extras.getString("qtteProduit");
+        String quantiteProduit = extras.getString("qtteProduit");
         final EditText txtQtte = findViewById(R.id.txtQtte);
         txtQtte.setText(quantiteProduit);
 
@@ -70,13 +71,11 @@ public class ModifQuantite extends AppCompatActivity {
 
     public void modifQunatite(String qtte) throws IOException {
         Bundle bundle = getIntent().getExtras();
-        String idCommande = bundle.getString("IDCOMMANDE");
-        Log.d("idProd", idProduit);
 
         RequestBody formBody = new FormBody.Builder()
-                .add("producteur", idCommande)
+                .add("commande", idLaCommande)
                 .add("produit", idProduit)
-                .add("qtte", qtte)
+                .add("qtteLivree", qtte)
                 .build();
 
         Request request = new Request.Builder()
