@@ -20,9 +20,12 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import static com.example.biorelai.CommandeProducteurActivity.idProduit;
+
 public class ModifQuantite extends AppCompatActivity {
     String responseStr ;
     OkHttpClient client = new OkHttpClient();
+    String quantiteProduit = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +42,22 @@ public class ModifQuantite extends AppCompatActivity {
         String txtProduit = produitActuel;
         textIdentificationProduit.setText(txtProduit);
 
-        String quantiteProduit = extras.getString("qtteLivree");
-        final EditText textIdentificationQtte = findViewById(R.id.txtQtte);
-        String txtQtteLivree = quantiteProduit;
-        textIdentificationQtte.setText(txtQtteLivree);
+        //L'affichage de la quantité livrée devrai apparaître mais n'appraît pas. Je ne sais pas pourquoi...
+        quantiteProduit = extras.getString("qtteProduit");
+        final EditText txtQtte = findViewById(R.id.txtQtte);
+        txtQtte.setText(quantiteProduit);
+
+        Button btnValider = (Button) findViewById(R.id.btnValider);
+        btnValider.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View btnValider) {
+                String laQtte = String.valueOf(txtQtte.getText());
+                try {
+                    modifQunatite(laQtte);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         Button btnRetour = (Button) findViewById(R.id.btnRetour);
         btnRetour.setOnClickListener(new View.OnClickListener() {
@@ -52,15 +67,11 @@ public class ModifQuantite extends AppCompatActivity {
             }
         });
     }
-    /*public void liste() throws IOException {
-        Bundle bundle = getIntent().getExtras();
-        str = bundle.getString("qtteProduit");
-        Log.d("Qtte3", str);
-    }*/
+
     public void modifQunatite(String qtte) throws IOException {
         Bundle bundle = getIntent().getExtras();
         String idCommande = bundle.getString("IDCOMMANDE");
-        String idProduit = bundle.getString("IDPRODUIT");
+        Log.d("idProd", idProduit);
 
         RequestBody formBody = new FormBody.Builder()
                 .add("producteur", idCommande)

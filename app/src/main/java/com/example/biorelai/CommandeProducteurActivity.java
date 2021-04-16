@@ -31,6 +31,7 @@ import static com.example.biorelai.MainActivity.idUser;
 public class CommandeProducteurActivity extends AppCompatActivity {
     String responseStr ;
     OkHttpClient client = new OkHttpClient();
+    public static String idProduit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +98,7 @@ public class CommandeProducteurActivity extends AppCompatActivity {
                     jsonArrayLesCommandes = new JSONArray(responseStr);
                     for (int i = 0; i < jsonArrayLesCommandes.length(); i++) {
                         JSONObject jsonlaCommande = jsonArrayLesCommandes.getJSONObject(i);
+                        idProduit = jsonlaCommande.getString("IDPRODUIT");
                         arrayListLesCommandes.add("Commande n°" + jsonlaCommande.getString("IDCOMMANDE") + " \r" + "Client : " + jsonlaCommande.getString("MAIL") + "\r Produit : " + jsonlaCommande.getString("NOMPRODUIT") + " \r Quantité: " + jsonlaCommande.getString("QUANTITE"));
                         Log.d("laCommande", jsonlaCommande.toString());
                     }
@@ -120,6 +122,7 @@ public class CommandeProducteurActivity extends AppCompatActivity {
                         try {
                             Intent intent = new Intent(CommandeProducteurActivity.this, SignalerActivity.class);
                             intent.putExtra("IDCOMMANDE",finalJsonArrayCommande.getJSONObject(position).getString("IDCOMMANDE"));
+                            //intent.putExtra("idProduit", idProduit);
                             intent.putExtra("nomProduit",finalJsonArrayCommande.getJSONObject(position).getString("NOMPRODUIT"));
                             intent.putExtra("qtteLivree",finalJsonArrayCommande.getJSONObject(position).getInt("QUANTITE"));
                             Log.d("qtte ", String.valueOf(finalJsonArrayCommande.getJSONObject(position).getInt("QUANTITE")));
