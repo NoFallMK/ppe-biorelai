@@ -59,7 +59,7 @@ public class AnciennesCommandesActivity extends AppCompatActivity {
         Log.d("test1", idUser);
 
         Request request = new Request.Builder()
-                .url("http://169.254.78.78/ppe_biorelai/controleurs/lesAnciennesCommandes.php")
+                .url("http://172.19.228.188/ppe_biorelai/controleurs/lesAnciennesCommandes.php")
                 .post(formBody)
                 .build();
         Call call = client.newCall(request);

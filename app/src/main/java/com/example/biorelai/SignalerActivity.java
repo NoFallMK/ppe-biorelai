@@ -121,7 +121,7 @@ public class SignalerActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://169.254.78.78/ppe_biorelai/controleurs/modifEtat.php")
+                .url("http://172.19.228.188/ppe_biorelai/controleurs/modifEtat.php")
                 .post(formBody)
                 .build();
 

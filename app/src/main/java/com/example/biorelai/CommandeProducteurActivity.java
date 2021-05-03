@@ -84,7 +84,7 @@ public class CommandeProducteurActivity extends AppCompatActivity {
         Log.d("test1", tri);
 
         Request request = new Request.Builder()
-                .url("http://169.254.78.78/ppe_biorelai/controleurs/lesCommandes.php")
+                .url("http://172.19.228.188/ppe_biorelai/controleurs/lesCommandes.php")
                 .post(formBody)
                 .build();
         Call call = client.newCall(request);

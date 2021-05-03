@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         .add("mdp",  textMdp.getText().toString())
         .build();
         Request request = new Request.Builder()
-        .url("http://169.254.78.78/ppe_biorelai/controleurs/authentification.php")
+        .url("http://172.19.228.188/ppe_biorelai/controleurs/authentification.php")
         .post(formBody)
         .build();
         Log.d("Test", textLogin.getText().toString()+textMdp.getText().toString());
